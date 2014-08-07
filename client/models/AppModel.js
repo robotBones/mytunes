@@ -18,20 +18,17 @@ var AppModel = Backbone.Model.extend({
     }, this);
 
     params.library.on('enqueue', function(song){
-      console.log("library collection AppModel hears enqeue event", song);
       this.get('songQueue').add(song);
     }, this);
 
     this.get('songQueue').on('next', function(song){
       var nextSong = this.get('songQueue').at(0);
-      console.log('inside of apmodel',nextSong);
       if(nextSong){
         this.set('currentSong', nextSong);
         console.log('nexting in app model', nextSong);
       } else {
         this.set('currentSong', null);
       }
-      console.log('app model remove:', song, 'current is now:', nextSong, 'length:', this.get('songQueue').length);
     }, this);
   }
 
