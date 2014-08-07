@@ -9,7 +9,7 @@ var PlayerView = Backbone.View.extend({
     "ended": function(){
       console.log("player view noticed it's song has ended", this.model);
       console.log('player view is dequeueing on model');
-      this.model.dequeue();
+      this.model.ended();
     }
   },
 
